@@ -1,0 +1,7 @@
+export const basketTypes = {
+  CHANGE_BASKET_STATE: 'basket/CHANGE_BASKET_STATE',
+
+  ADD_PRODUCT: 'basket/ADD_PRODUCT',
+  REDUCE_PRODUCT: 'basket/REDUCE_PRODUCT',
+  REMOVE_PRODUCT: 'basket/REMOVE_PRODUCT',
+};

@@ -1,0 +1,57 @@
+.root {
+  display: block;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  top: 90px;
+  right: 40px;
+
+  width: 80px;
+  height: 80px;
+
+  .btnContent {
+    display: flex;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid #34aadd;
+    border-radius: 50%;
+    background: #34aadd;
+    i {
+      font-size: 30px;
+      text-align: center;
+      color: white;
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .buyCounter {
+    position: relative;
+    display: block;
+    height: 27px;
+    width: 27px;
+    z-index: 999;
+    right: -5px;
+    top: -30px;
+    padding: 5px 3px 3px 3px;
+    background: white;
+    font-size: 0.9rem;
+    text-align: center;
+    color: #093d9a;
+    font-weight: 900;
+    border: 2px solid #093d9a;
+    border-radius: 50%;
+  }
+
+  &:hover .btnContent {
+    border-color: #04b4ff;
+    background: #04b4ff;
+  }
+}
