@@ -1,25 +1,18 @@
+import { CircleTooltip } from '@components/CircleTooltip';
+import { Modal } from '@components/Modal';
+import { Portal } from '@mui/base';
+import { formatPhone } from '@utils/func';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useModal } from '@utils/useModal';
+import { CallModal } from './CallModal';
 
-export function Footer() {
-  const [modal, setModal] = React.useState({ modal: false });
+export const Footer = () => {
+  const { openModal } = useModal();
 
-  function openModal() {
-    setModal({ modal: !modal.modal });
-    //@ts-ignore
-    document.body.style = 'overflow: hidden';
-  }
-
-  function closeModal(clickTarget: any) {
-    if (
-      clickTarget.classList.contains('bg-modal') ||
-      clickTarget.classList.contains('close')
-    ) {
-      setModal({ modal: !modal.modal });
-    }
-    //@ts-ignore
-    document.body.style = '';
-  }
+  const openModalHandler = () => {
+    openModal(CallModal);
+  };
 
   return (
     <footer className='footer'>
@@ -61,42 +54,23 @@ export function Footer() {
               </ol>
             </li>
           </ul>
+
           <div className='footer-call'>
-            <div className='btn btn-blue btn-call' onClick={openModal}>
+            <div className='btn btn-blue btn-call' onClick={openModalHandler}>
               <div className='btn-content'>
                 <i className='fa fa-phone' aria-hidden='true'></i>
                 <span>Заказать звонок</span>
               </div>
             </div>
           </div>
-          <div className='call-mobaile' onClick={openModal}>
+          <CircleTooltip classes={'call-mobaile'} onClick={openModalHandler}>
             <div className='btn-content'>
               <i className='fa fa-phone' aria-hidden='true'></i>
               <span>Заказать звонок</span>
             </div>
-          </div>
-          {modal.modal && (
-            <div
-              className='bg-modal'
-              onClick={(event) => closeModal(event.target)}
-            >
-              <div className='modal'>
-                <div className='modal-header'>
-                  <div className='close'>&times;</div>
-                </div>
-                <div className='modal-body'>
-                  <h1>Заказать звонок</h1>
-                  <form action='#'>
-                    <input type='text' placeholder='Как к вам обращаться?' />
-                    <input type='text' placeholder='8(999)999-99-99' />
-                    <button>Отправить</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          )}
+          </CircleTooltip>
         </div>
       </div>
     </footer>
   );
-}
+};

@@ -1,0 +1,9 @@
+.root {
+  & > div:last-child {
+    width: 50%;
+    min-width: 275px;
+    max-width: 500px;
+    max-height: 436px;
+    height: 70vh;
+  }
+}

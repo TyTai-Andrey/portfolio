@@ -1,0 +1,13 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  height: calc(100% - 68px);
+
+  .button {
+    margin-top: auto;
+  }
+}

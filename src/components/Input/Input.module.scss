@@ -1,0 +1,19 @@
+.root {
+  width: 80%;
+  min-width: 230px;
+  margin-top: 20px;
+  padding: 1em 0.5em;
+  text-align: center;
+  border: 1px solid #34aadd;
+  outline-color: #34aadd;
+}
+.error {
+  width: 80%;
+  min-width: 230px;
+  margin-top: 5px;
+  padding: 0 5px;
+
+  color: red;
+  font-weight: 500;
+  font-size: 16px;
+}

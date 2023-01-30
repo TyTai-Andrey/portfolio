@@ -1,4 +1,5 @@
 import Skeleton from '@mui/material/Skeleton';
+import { loadingDelay } from '@utils/data';
 import React, { useEffect, useState } from 'react';
 
 type PartnerProps = {
@@ -13,7 +14,7 @@ export const Partner: React.FC<PartnerProps> = ({ item }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 1000);
+    setTimeout(() => setLoading(false), loadingDelay);
   }, []);
 
   if (loading)

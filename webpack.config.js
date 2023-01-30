@@ -105,8 +105,10 @@ module.exports = (env = {}) => {
 
       alias: {
         '@components': path.resolve(__dirname, './src/components'),
+        '@api': path.resolve(__dirname, './src/api'),
         '@pages': path.resolve(__dirname, './src/pages'),
         '@redux': path.resolve(__dirname, './src/redux'),
+        '@utils': path.resolve(__dirname, './src/utils'),
         '@store': path.resolve(__dirname, './src/store'),
       },
     },

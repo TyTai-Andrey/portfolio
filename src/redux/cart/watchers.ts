@@ -5,12 +5,18 @@ import { all, call, takeLatest } from 'redux-saga/effects';
 import { cartTypes } from './types';
 
 // Workers
-import { changeCart } from './workers';
+import { fetchProducts, fetchProductsOptions } from './workers';
 
-function* watchChangeCart() {
-  yield takeLatest(cartTypes.CHANGE_STATE_CART, changeCart);
+function* watchFetchProducts() {
+  yield takeLatest(cartTypes.FETCH_PRODUCTS_ASYNC, fetchProducts);
+}
+function* watchFetchProductsOptions() {
+  yield takeLatest(
+    cartTypes.FETCH_PRODUCTS_OPTIONS_ASYNC,
+    fetchProductsOptions,
+  );
 }
 
 export function* watchCart() {
-  yield all([call(watchChangeCart)]);
+  yield all([call(watchFetchProducts), call(watchFetchProductsOptions)]);
 }

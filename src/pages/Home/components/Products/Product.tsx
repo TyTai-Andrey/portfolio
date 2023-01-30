@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { basketActions } from '@redux/basket/actions';
 import Skeleton from '@mui/material/Skeleton';
+import { numberInPrice } from '@utils/func';
+import { loadingDelay } from '@utils/data';
 
 type ProductProps = {
   product: any;
@@ -11,12 +13,6 @@ type ProductProps = {
 };
 
 const Product: React.FC<ProductProps> = ({ product, extraParams }) => {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 1000);
-  }, []);
-
   const photo = {
     background: `url('${product?.productPhoto}') center`,
     backgroundSize: 'cover',
@@ -35,15 +31,8 @@ const Product: React.FC<ProductProps> = ({ product, extraParams }) => {
     );
   }, [product]);
 
-  if (loading)
-    return (
-      <div className='product' id={product?.id}>
-        <Skeleton variant='rectangular' height={'100%'} />
-      </div>
-    );
-
   return (
-    <div className='product' id={product?.id}>
+    <div className='product'>
       <div className='product-photo' style={photo}>
         {extraParams && (
           <div className='rowIcons'>
@@ -71,12 +60,12 @@ const Product: React.FC<ProductProps> = ({ product, extraParams }) => {
             {extraParams?.oldPrice && (
               <div className='price-old'>
                 <span className='diagonale'></span>
-                <span>{extraParams.oldPrice} </span>
+                <span>{numberInPrice(extraParams.oldPrice)}</span>
                 <i className='fas fa-ruble-sign'></i>
               </div>
             )}
             <div className='price-new'>
-              <span>{product.price}</span>
+              <span>{numberInPrice(product.price)}</span>
               <i className='fas fa-ruble-sign'></i>
             </div>
           </div>

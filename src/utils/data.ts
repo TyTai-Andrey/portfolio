@@ -1,3 +1,5 @@
+export const loadingDelay = 1000;
+
 // Новости
 export const arrNews = [
   {
@@ -37,7 +39,6 @@ export const arrNews = [
 ];
 
 // Партнёры внизу страницы
-
 export const arrParthers = [
   { id: 'par6', url: '../public/img/logo_1.jpg', alt: 'logo_1' },
   { id: 'par7', url: '../public/img/logo_2.jpg', alt: 'logo_2' },
@@ -52,7 +53,7 @@ export const productsOptions = [
     iconAction: true,
     iconHit: true,
     iconBestPrice: true,
-    oldPrice: '1 499 ',
+    oldPrice: 1499,
   },
   {
     id: 2,
@@ -66,14 +67,14 @@ export const productsOptions = [
     iconAction: false,
     iconHit: true,
     iconBestPrice: false,
-    oldPrice: '2 699 ',
+    oldPrice: 2699,
   },
   {
     id: 4,
     iconAction: true,
     iconHit: true,
     iconBestPrice: false,
-    oldPrice: '2 199 ',
+    oldPrice: 2199,
   },
 ];
 

@@ -3,8 +3,28 @@ import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
 import styles from './Header.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAccountData } from '@redux/account/selectors';
+import { accountActions } from '@redux/account/actions';
+import { useModal } from '@utils/useModal';
+import { LoginModal } from './LoginModal';
 
 export const Header = () => {
+  const dispatch = useDispatch();
+  const data = useSelector(getAccountData);
+
+  const token = data?.token;
+
+  const { openModal } = useModal();
+
+  const login = () => {
+    openModal(LoginModal);
+  };
+
+  const logout = () => {
+    dispatch(accountActions.logoutAccount());
+  };
+
   return (
     <header>
       <div className={styles.root}>
@@ -47,11 +67,19 @@ export const Header = () => {
               Звоните с 8 до 23!
             </div>
           </div>
-          <div className='btn btn-blue short'>
-            <div className='btn-content'>
-              <span>Войти</span>
+          {token ? (
+            <div className='btn btn-blue short' onClick={logout}>
+              <div className='btn-content'>
+                <span>Выйти</span>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className='btn btn-blue short' onClick={login}>
+              <div className='btn-content'>
+                <span>Войти</span>
+              </div>
+            </div>
+          )}
           <div className={styles.mobileMenu}>
             <span></span>
           </div>
@@ -70,7 +98,7 @@ export const Header = () => {
               <NavLink to='/pay'>Оплата</NavLink>
             </li>
             <li>
-              <NavLink to='/saveguard'>Гарантия</NavLink>
+              <NavLink to='/news'>Новости</NavLink>
             </li>
             <li>
               <NavLink to='/about'>О нас</NavLink>

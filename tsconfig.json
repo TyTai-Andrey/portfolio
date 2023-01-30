@@ -18,8 +18,10 @@
       "sourceMap": true,
       "paths": {
           "@components/*": ["./src/components/*"],
+          "@api/*": ["./src/api/*"],
           "@pages/*": ["./src/pages/*"],
           "@redux/*": ["./src/redux/*"],
+          "@utils/*": ["./src/utils/*"],
           "@store/*": ["./src/store/*"],
       }
   },

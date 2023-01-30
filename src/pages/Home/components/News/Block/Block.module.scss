@@ -1,0 +1,8 @@
+.skeleton {
+  width: 100%;
+  height: 368px;
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}

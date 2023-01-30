@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { getCartReducer } from '@redux/cart/selectors';
 import { CartListItem } from './CartListItem';
 import { getBasketData } from '@redux/basket/selectors';
 import { Alert } from '@components/Alert';
