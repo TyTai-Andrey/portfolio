@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { basketActions } from '@redux/basket/actions';
 import Skeleton from '@mui/material/Skeleton';
 import { numberInPrice } from '@utils/func';
-import { loadingDelay } from '@utils/data';
+import { useSnackbar } from 'notistack';
 
 type ProductProps = {
   product: any;
@@ -13,6 +13,7 @@ type ProductProps = {
 };
 
 const Product: React.FC<ProductProps> = ({ product, extraParams }) => {
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const photo = {
     background: `url('${product?.productPhoto}') center`,
     backgroundSize: 'cover',
@@ -21,6 +22,10 @@ const Product: React.FC<ProductProps> = ({ product, extraParams }) => {
   const dispatch = useDispatch();
 
   const addProduct = useCallback(() => {
+    enqueueSnackbar('Данные отправлены', {
+      variant: 'success',
+      onClick: () => closeSnackbar(),
+    });
     dispatch(
       basketActions.addProduct({
         id: product.id,

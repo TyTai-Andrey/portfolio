@@ -1,4 +1,3 @@
-import { ShopCart } from '@components/ShopCart';
 import { Skeleton } from '@mui/material';
 import Product from '@pages/Home/components/Products/Product';
 import { cartActions } from '@redux/cart/actions';
@@ -35,7 +34,6 @@ const Products = () => {
 
   return (
     <>
-      <ShopCart />
       {!products?.length ? null : (
         <section className='popular'>
           <div className='swapper'>

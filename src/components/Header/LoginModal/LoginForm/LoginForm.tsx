@@ -5,11 +5,11 @@ import { accountActions } from '@redux/account/actions';
 import { accountShapes } from '@redux/account/shapes';
 import { asyncValidator } from '@utils/asyncValidator';
 import { useModal } from '@utils/useModal';
-import withReduxForm from '@utils/withReduxForm';
 import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFormValues, InjectedFormProps, reduxForm } from 'redux-form';
 import styles from './LoginForm.module.scss';
+import { useSnackbar } from 'notistack';
 
 export type LoginFormProps = {};
 type ShapeType = typeof accountShapes.form.shape;
@@ -19,6 +19,7 @@ const LoginForm: FC<LoginFormProps & InjectedFormProps<ShapeType>> = ({
 }) => {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const values = useSelector(getFormValues('LoginForm')) as ShapeType;
 
@@ -38,6 +39,10 @@ const LoginForm: FC<LoginFormProps & InjectedFormProps<ShapeType>> = ({
     }
 
     dispatch(accountActions.fetchAccountAsync(values));
+    enqueueSnackbar('Данные отправлены', {
+      variant: 'success',
+      onClick: () => closeSnackbar(),
+    });
     closeModal();
   };
 

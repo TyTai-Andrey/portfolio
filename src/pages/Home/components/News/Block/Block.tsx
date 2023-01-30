@@ -3,7 +3,6 @@ import { loadingDelay } from '@utils/data';
 import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import styles from './Block.module.scss';
 
 type BlockProps = {
   params:
@@ -25,12 +24,6 @@ type BlockProps = {
 };
 
 export const Block: React.FC<BlockProps> = ({ params, num }) => {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => setLoading(false), loadingDelay);
-  }, []);
-
   const typeDeterminant = num % 4;
   let type = 'short';
 
@@ -46,13 +39,6 @@ export const Block: React.FC<BlockProps> = ({ params, num }) => {
     background: params.bg_img + ' center',
     backgroundSize: 'cover',
   };
-
-  if (loading)
-    return (
-      <div className={styles.skeleton}>
-        <Skeleton variant='rectangular' height={'100%'} />
-      </div>
-    );
 
   return (
     <div

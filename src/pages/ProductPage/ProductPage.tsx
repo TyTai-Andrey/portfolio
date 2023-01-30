@@ -1,5 +1,4 @@
 import { Alert } from '@components/Alert';
-import { ShopCart } from '@components/ShopCart';
 import { Skeleton } from '@mui/material';
 import Product from '@pages/Home/components/Products/Product';
 import { cartActions } from '@redux/cart/actions';
@@ -46,7 +45,6 @@ const ProductPage: FC<
 
   return (
     <>
-      <ShopCart />
       {
         <section className='popular'>
           <div className='swapper'>

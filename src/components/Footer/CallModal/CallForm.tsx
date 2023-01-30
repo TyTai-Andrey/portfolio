@@ -1,5 +1,4 @@
 import { Form } from '@components/Form';
-import { InfoModal } from '@components/InfoModal';
 import Input from '@components/Input';
 import { getAccountData } from '@redux/account/selectors';
 import { asyncValidator } from '@utils/asyncValidator';
@@ -13,7 +12,7 @@ import {
   InjectedFormProps,
   reduxForm,
 } from 'redux-form';
-import styles from './CallModal.module.scss';
+import { useSnackbar } from 'notistack';
 import { callShapes } from './shapes';
 
 interface CallFormProps {}
@@ -22,7 +21,8 @@ type ShapeType = typeof callShapes.form.shape;
 export const CallForm: React.FC<
   CallFormProps & InjectedFormProps<ShapeType>
 > = ({ handleSubmit }) => {
-  const { openModal } = useModal();
+  const { closeModal } = useModal();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const dispath = useDispatch();
   const values = useSelector(getFormValues('CallModal')) as ShapeType;
@@ -57,7 +57,11 @@ export const CallForm: React.FC<
     try {
       await validate(values);
 
-      openModal(InfoModal, { title: 'Отправленные данные', data: values });
+      enqueueSnackbar('Данные отправлены', {
+        variant: 'success',
+        onClick: () => closeSnackbar(),
+      });
+      closeModal();
     } catch (errors) {
       setErrors(errors as { [key: string]: string });
     }

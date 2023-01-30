@@ -41,9 +41,6 @@ export const CartListItem: React.FC<CartListItemProps> = () => {
         <div className='cartList_item'>
           <Skeleton variant='rectangular' height={'100%'} width={'100%'} />
         </div>
-        <div className='cartList_item'>
-          <Skeleton variant='rectangular' height={'100%'} width={'100%'} />
-        </div>
       </>
     );
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import { ShopCart } from '@components/ShopCart';
 import { RouteComponentProps } from 'react-router';
 import { News } from '@pages/Home/components/News';
 
@@ -14,7 +13,6 @@ const NewsPage: React.FC<
 }) => {
   return (
     <>
-      <ShopCart />
       <News />
     </>
   );

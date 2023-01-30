@@ -16,6 +16,8 @@ import { Header } from '@components/Header';
 import { Footer } from '@components/Footer';
 
 import styles from './App.module.scss';
+import { ShopCart } from '@components/ShopCart';
+import { Snackbar } from '@mui/material';
 
 export const history = createBrowserHistory();
 
@@ -23,6 +25,8 @@ const App = () => {
   return (
     <Router history={history}>
       <Header />
+      <ShopCart />
+
       <div className={styles.root}>
         <Switch>
           <Route path={'/'} exact component={Home} />
